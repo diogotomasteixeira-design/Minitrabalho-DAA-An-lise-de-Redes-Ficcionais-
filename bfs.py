@@ -1,12 +1,11 @@
 from collections import deque
 
-
 def bfs(graph, source):
     visited = {}
     dist = {}
     parent = {}
 
-    for v in graph:
+    for v in graph.get_vertices():
         visited[v] = False
         dist[v] = float('inf')
         parent[v] = None
@@ -20,7 +19,7 @@ def bfs(graph, source):
     while queue:
         v = queue.popleft()
 
-        for w in graph[v]:
+        for w, weight in graph.get_neighbors(v):  # 👈 aqui está a diferença
             if not visited[w]:
                 visited[w] = True
                 dist[w] = dist[v] + 1
@@ -28,7 +27,6 @@ def bfs(graph, source):
                 queue.append(w)
 
     return visited, dist, parent
-
 
 graph = {
     "Eddard-Stark": ["Jon-Snow", "Robert-Baratheon", "Catelyn-Stark"],
