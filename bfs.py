@@ -19,7 +19,7 @@ def bfs(graph, source):
     while queue:
         v = queue.popleft()
 
-        for w, weight in graph.get_neighbors(v):  # 👈 aqui está a diferença
+        for w, weight in graph.get_neighbors(v):
             if not visited[w]:
                 visited[w] = True
                 dist[w] = dist[v] + 1
@@ -56,6 +56,10 @@ for v in parent:
     print(v, "->", parent[v])
 
 
+
+
+
+# código atualizado comm o init() feito
 
 
 #           Jon-Snow
